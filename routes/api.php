@@ -30,7 +30,7 @@ Route::group(['prefix' => 'v1'], function()
 
    });
 
-   //other route
+   //other routes
    Route::put('/profile', ['\App\Http\Controllers\Api\V1\UserController','profile']);
 
 });
