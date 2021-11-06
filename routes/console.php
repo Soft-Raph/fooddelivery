@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('run', function (){
+    $this->info('Welcome to swiftdely app');
+    $this->info('Please wait...');
+
+    $this->comment('Clearing and Migrating DB...');
+    Artisan::call('migrate:fresh');
+
+    $this->comment('Installing passport...');
+    Artisan::call('passport:install');
+});
