@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Giver;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
-class GiverController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class GiverController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Giver  $giver
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function show(Giver $giver)
+    public function show(Transaction $transaction)
     {
         //
     }
@@ -52,10 +52,10 @@ class GiverController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Giver  $giver
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function edit(Giver $giver)
+    public function edit(Transaction $transaction)
     {
         //
     }
@@ -64,10 +64,10 @@ class GiverController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Giver  $giver
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Giver $giver)
+    public function update(Request $request, Transaction $transaction)
     {
         //
     }
@@ -75,10 +75,10 @@ class GiverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Giver  $giver
+     * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Giver $giver)
+    public function destroy(Transaction $transaction)
     {
         //
     }
