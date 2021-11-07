@@ -79,7 +79,7 @@ class AuthController extends Controller
     {
         try {
             $user = Auth::guard('api')->user();
-            return $this->success($user,'Profile information fetched successfully');
+            return $this->success($user,'Profile information fetched successfully', 200);
         }
         catch (Exception $e){
             return $this->error($e->getCode(), $e->getMessage());
