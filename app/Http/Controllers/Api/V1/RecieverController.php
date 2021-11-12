@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api\V1;
-use App\Models\Reciever;
+use App\Models\Receiver;
 use Illuminate\Http\Request;
 
 class RecieverController extends Controller
@@ -40,10 +40,10 @@ class RecieverController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Reciever  $reciever
+     * @param  \App\Models\Receiver  $reciever
      * @return \Illuminate\Http\Response
      */
-    public function show(Reciever $reciever)
+    public function show(Receiver $reciever)
     {
         //
     }
@@ -51,10 +51,10 @@ class RecieverController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Reciever  $reciever
+     * @param  \App\Models\Receiver  $reciever
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reciever $reciever)
+    public function edit(Receiver $reciever)
     {
         //
     }
@@ -63,10 +63,10 @@ class RecieverController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Reciever  $reciever
+     * @param  \App\Models\Receiver  $reciever
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reciever $reciever)
+    public function update(Request $request, Receiver $reciever)
     {
         //
     }
@@ -74,10 +74,10 @@ class RecieverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Reciever  $reciever
+     * @param  \App\Models\Receiver  $reciever
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reciever $reciever)
+    public function destroy(Receiver $reciever)
     {
         //
     }

@@ -2,25 +2,40 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Models\Shop;
+use App\Models\User;
+use App\Traits\ApiResponseTrait;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ShopController extends Controller
 {
+
+    use ApiResponseTrait;
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $shops = Shop::all();
+        if (count($shops) == 0)
+        {
+            return $this->error(404, 'No shop available now');
+        }
+        return $this->success($shops, 'shop fetched successfully', 200);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -30,56 +45,110 @@ class ShopController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        //
+        $validate = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'lat' => 'nullable|string',
+            'long' => 'nullable|string',
+            'address' => 'required|string',
+
+        ]);
+        if($validate->fails())
+        {
+            return $this->error(422, $validate->messages()->first());
+        }
+
+        $create = Shop::create($validate->validated());
+        if (!$create)
+        {
+            return $this->error(500, 'shop not created');
+        }
+
+        return $this->success($create, 'Shop created successfully', 200);
     }
+
+
+
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Shop  $shop
-     * @return \Illuminate\Http\Response
+     * @param Shop $shop
+     * @return JsonResponse
      */
-    public function show(Shop $shop)
+    public function show(Shop $shop): JsonResponse
     {
-        //
+        return $this->success($shop, 'shop fetched successfully', 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Shop  $shop
-     * @return \Illuminate\Http\Response
+     * @param Shop $shop
+     * @return Response
      */
     public function edit(Shop $shop)
     {
         //
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Shop  $shop
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Shop $shop
+     * @return JsonResponse
      */
-    public function update(Request $request, Shop $shop)
+    public function update(Request $request, Shop $shop): JsonResponse
     {
-        //
-    }
+        try {
+            $validate = Validator::make($request->all(), [
+                'name' => 'required|string',
+                'lat' => 'nullable|string',
+                'long' => 'nullable|string',
+                'address' => 'required|string',
+
+            ]);
+            if ($validate->fails()) {
+                return $this->error(422, $validate->messages()->first());
+            }
+
+            $update = $shop->update($validate->validated());
+
+            if (!$update) {
+                return $this->error(500, 'Shop update failed');
+            }
+
+            return $this->success($shop, 'Shop updated successfully', 200);
+        }
+        catch (\Exception $e)
+        {
+            return $this->error($e->getCode(), $e->getMessage());
+        }
+
+}
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Shop  $shop
-     * @return \Illuminate\Http\Response
+     * @param Shop $shop
+     * @return JsonResponse
      */
-    public function destroy(Shop $shop)
+    public function destroy(shop $shop): JsonResponse
     {
-        //
+        $delete = $shop->delete();
+
+        if (!$delete){
+            return $this->error(500, 'Shop remover failed');
+        }
+
+        return $this->success(null,'Shop remover successfully', 200);
     }
+
+
 }

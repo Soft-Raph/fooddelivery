@@ -12,6 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -48,4 +49,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'phone_number_verified_at' => 'datetime',
     ];
+    public function orders(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function givers(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Giver::class);
+    }
+
+    public function transactions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+
 }
