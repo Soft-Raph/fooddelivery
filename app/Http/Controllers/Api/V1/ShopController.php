@@ -82,6 +82,7 @@ class ShopController extends Controller
      */
     public function show(Shop $shop): JsonResponse
     {
+
         return $this->success($shop, 'shop fetched successfully', 200);
     }
 

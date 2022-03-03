@@ -21,7 +21,7 @@ Route::group(['prefix' => 'v1'], function()
     Route::post('/login', ['\App\Http\Controllers\Api\V1\AuthController','login']);
     Route::post('/register', ['\App\Http\Controllers\Api\V1\AuthController','register']);
 
-    //User
+    //User endpoint
    Route::group(['middleware' => 'authorization', 'prefix' => 'user'], function ()
    {
        Route::get('/', ['\App\Http\Controllers\Api\V1\AuthController','user']);
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'v1'], function()
 
    });
 
-    //Shop
+    //Shop endpoint
     Route::group(['middleware' => 'authorization', 'prefix' => 'shops'], function ()
     {
         Route::get('/', ['\App\Http\Controllers\Api\V1\ShopController','index']);
@@ -41,6 +41,11 @@ Route::group(['prefix' => 'v1'], function()
 
     });
 
+//Price endpoint
+    Route::group(['middleware'=>'authorization', 'prefix'=>'prices'], function ()
+    {
+        Route::post('/store', ['\App\Http\Controllers\Api\V1\PriceController', 'show']);
+    });
    //other routes
    Route::put('/profile', ['\App\Http\Controllers\Api\V1\UserController','profile']);
 

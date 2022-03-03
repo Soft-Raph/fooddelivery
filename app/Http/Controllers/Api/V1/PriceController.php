@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Price;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PriceController extends Controller
 {
@@ -35,7 +36,10 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = Validator::make($request->all(), [
+            'price' => 'required|string',
+        ]);
+
     }
 
     /**
