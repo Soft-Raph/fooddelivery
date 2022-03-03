@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Multicaret\Acquaintances\Traits\CanFollow;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, CanFollow;
 
 
     /**
@@ -54,9 +55,14 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function givers(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function giveaways(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Giver::class);
+        return $this->hasMany(Giveaway::class);
+    }
+
+    public function participation(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Participation::class);
     }
 
     public function transactions(): \Illuminate\Database\Eloquent\Relations\HasMany

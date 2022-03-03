@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Giver extends Model
+class Participation extends Model
 {
     use HasFactory;
 
@@ -14,8 +14,10 @@ class Giver extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function receivers(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function giveaways(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasMany(Receiver::class);
+        return $this->belongsTo(Giveaway::class);
     }
+
+
 }

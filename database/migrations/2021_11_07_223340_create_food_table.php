@@ -15,10 +15,12 @@ class CreateFoodTable extends Migration
     {
         Schema::create('food', function (Blueprint $table) {
             $table->id();
-            $table->string('shop_id');
-            $table->string('price_id');
-            $table->string('available');
+            $table->unsignedBigInteger('shop_id');
+            $table->boolean('available')->default(false);
             $table->timestamps();
+
+            $table->foreign('shop_id')->references('id')
+                ->on('shops')->onDelete('cascade');
         });
     }
 

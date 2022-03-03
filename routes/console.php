@@ -20,11 +20,12 @@ Artisan::command('inspire', function () {
 
 Artisan::command('run', function (){
     $this->info('Welcome to swiftdely app');
-    $this->info('Please wait...');
 
     $this->comment('Clearing and Migrating DB...');
     Artisan::call('migrate:fresh');
+    $this->info('Migration done');
 
     $this->comment('Installing passport...');
     Artisan::call('passport:install');
+    $this->info('Passport installed');
 });

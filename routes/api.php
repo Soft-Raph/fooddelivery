@@ -41,7 +41,7 @@ Route::group(['prefix' => 'v1'], function()
 
     });
 
-//Price endpoint
+    //Price endpoint
     Route::group(['middleware'=>'authorization', 'prefix'=>'prices'], function ()
     {
         Route::post('/store', ['\App\Http\Controllers\Api\V1\PriceController', 'show']);

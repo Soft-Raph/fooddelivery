@@ -15,7 +15,6 @@ class Shop extends Model
         'address',
         'lat',
         'long'
-
     ];
 
 
