@@ -35,9 +35,9 @@ Route::group(['prefix' => 'v1'], function()
     {
         Route::get('/', ['\App\Http\Controllers\Api\V1\ShopController','index']);
         Route::get('/show/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','show']);
-        Route::post('/store', ['\App\Http\Controllers\Api\V1\ShopController','store']);
-        Route::put('/update/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','update']);
-        Route::delete('/delete/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','destroy']);
+//        Route::post('/store', ['\App\Http\Controllers\Api\V1\ShopController','store']);
+//        Route::put('/update/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','update']);
+//        Route::delete('/delete/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','destroy']);
 
     });
 
