@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Giveaway extends Model
 {
     use HasFactory;
+    protected $fillable =
+        [
+            'user_id',
+            'amount',
+            'no_of_winner',
+            'end_at'
+        ];
 
     public function users(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
