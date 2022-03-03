@@ -19,7 +19,7 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('run', function (){
-    $this->info('Welcome to swiftdely app');
+    $this->info('Welcome to swiftdely backend app');
 
     $this->comment('Clearing and Migrating DB...');
     Artisan::call('migrate:fresh');
