@@ -8,7 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
-
+    protected $fillable =
+        [
+            'user_id',
+            'amount',
+            'old_balance',
+            'new_balance',
+            'status',
+            'type',
+            'description'
+        ];
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
