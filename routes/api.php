@@ -35,18 +35,20 @@ Route::group(['prefix' => 'v1'], function()
     {
         Route::get('/', ['\App\Http\Controllers\Api\V1\ShopController','index']);
         Route::get('/show/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','show']);
-//        Route::post('/store', ['\App\Http\Controllers\Api\V1\ShopController','store']);
-//        Route::put('/update/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','update']);
-//        Route::delete('/delete/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','destroy']);
+        Route::post('/store', ['\App\Http\Controllers\Api\V1\ShopController','store']);
+        Route::put('/update/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','update']);
+        Route::delete('/delete/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','destroy']);
 
     });
 
-    //Price endpoint
-    Route::group(['middleware'=>'authorization', 'prefix'=>'prices'], function ()
+    //Food endpoint
+    Route::group(['middleware'=>'authorization', 'prefix'=>'food'], function ()
     {
-        Route::post('/store', ['\App\Http\Controllers\Api\V1\PriceController', 'show']);
+        Route::get('/', ['\App\Http\Controllers\Api\V1\FoodController', 'index']);
+        Route::get('/show/{id}', ['\App\Http\Controllers\Api\V1\FoodController','show']);
+
     });
    //other routes
-   Route::put('/profile', ['\App\Http\Controllers\Api\V1\UserController','profile']);
+   Route::put('/profse', ['\App\Http\Controllers\Api\V1\UserController','profile']);
 
 });

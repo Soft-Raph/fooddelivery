@@ -2,19 +2,28 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Models\Food;
+use App\Traits\ApiResponseTrait;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
 {
+    use ApiResponseTrait;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $food=Food::all();
+        if (count($food) == 0)
+        {
+            return $this->error(404, 'No food available now');
+        }
+        return $this->success($food, 'food fetched successfully', 200);
     }
 
     /**
@@ -44,9 +53,11 @@ class FoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function show(Food $food)
+    public function show($id): JsonResponse
     {
-        //
+        $food = Food::with('shops')->find($id);
+        return $this->success($food,'Food under this shop fetch successfully',200);
+
     }
 
     /**
