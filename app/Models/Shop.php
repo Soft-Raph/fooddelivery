@@ -18,7 +18,7 @@ class Shop extends Model
     ];
 
 
-    public function foods(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function food(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Food::class);
     }

@@ -13,7 +13,7 @@ class CreateFoodOrderTables extends Migration
      */
     public function up()
     {
-        Schema::create('foods_orders', function (Blueprint $table) {
+        Schema::create('food_order', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('food_id');

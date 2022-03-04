@@ -23,9 +23,9 @@ class Food extends Model
         return $this->belongsTo(Shop::class);
     }
 
-    public function prices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function price(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasMany(Price::class);
+        return $this->hasOne(Price::class);
     }
 
     public function orders(): \Illuminate\Database\Eloquent\Relations\BelongsToMany

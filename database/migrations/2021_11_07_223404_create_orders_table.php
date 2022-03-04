@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('status');
             $table->longText('location');
-            $table->json('data');
+            $table->string('code');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')
