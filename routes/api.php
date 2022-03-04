@@ -54,7 +54,7 @@ Route::group(['prefix' => 'v1'], function()
 
     });
 
-    //Transaction endpoints
+    //Transaction endpoint
     Route::group(['middleware'=>'authorization', 'prefix'=>'transaction'], function ()
     {
         Route::get('/show/{id}', ['\App\Http\Controllers\Api\V1\TransactionController','show']);
