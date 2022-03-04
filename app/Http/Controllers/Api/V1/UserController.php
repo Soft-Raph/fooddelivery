@@ -16,9 +16,9 @@ class UserController extends Controller
     {
         try {
             $validate = Validator::make($request->all(), [
-                'first_name' => 'required|string',
-                'last_name' => 'required|string',
-                'phone_number' => 'required|string'
+                'first_name' => 'string',
+                'last_name' => 'string',
+                'phone_number' => 'string'
             ]);
 
             if ($validate->fails())
