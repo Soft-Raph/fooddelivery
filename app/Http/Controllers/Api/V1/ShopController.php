@@ -29,7 +29,7 @@ class ShopController extends Controller
         {
             return $this->error(404, 'No shop available now');
         }
-        return $this->success($shops, 'shop fetched successfully', 200);
+        return $this->success($shops, 'All shops fetched successfully', 200);
     }
 
     /**
@@ -83,7 +83,7 @@ class ShopController extends Controller
     public function show(Shop $shop): JsonResponse
     {
 
-        return $this->success($shop, 'shop fetched successfully', 200);
+        return $this->success($shop, 'The particular shop fetched successfully', 200);
     }
 
     /**
