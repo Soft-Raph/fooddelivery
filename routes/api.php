@@ -27,6 +27,8 @@ Route::group(['prefix' => 'v1'], function()
        Route::get('/', ['\App\Http\Controllers\Api\V1\AuthController','user']);
        Route::post('/logout', ['\App\Http\Controllers\Api\V1\AuthController','logout']);
        Route::put('/update', ['\App\Http\Controllers\Api\V1\UserController','update']);
+       Route::put('/profile', ['\App\Http\Controllers\Api\V1\UserController','profile']);
+
 
    });
 
@@ -52,7 +54,12 @@ Route::group(['prefix' => 'v1'], function()
 
     });
 
-   //Profile routes
-   Route::put('/profile', ['\App\Http\Controllers\Api\V1\UserController','profile']);
+    //Transaction endpoint
+    Route::group(['middleware'=>'authorization', 'prefix'=>'transaction'], function ()
+    {
+        Route::get('/show/{id}', ['\App\Http\Controllers\Api\V1\TransactionController','show']);
+
+    });
+
 
 });
