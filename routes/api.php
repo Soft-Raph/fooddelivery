@@ -50,5 +50,6 @@ Route::group(['prefix' => 'v1'], function()
     });
    //other routes
    Route::put('/profse', ['\App\Http\Controllers\Api\V1\UserController','profile']);
+   Route::put('/profile', ['\App\Http\Controllers\Api\V1\UserController','profile']);
 
 });
