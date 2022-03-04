@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Order extends Model
 {
@@ -22,5 +23,22 @@ class Order extends Model
     public function food(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Food::class);
+    }
+
+    private static function generateUUID(): string
+    {
+        $uuid = Str::random(6);
+        if (self::where('code',$uuid)->first()){
+            self::generateUUID();
+        }
+        return $uuid;
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        self::creating(function($model) {
+            $model->uuid = self::generateUUID();
+        });
     }
 }

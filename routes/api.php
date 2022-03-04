@@ -35,21 +35,24 @@ Route::group(['prefix' => 'v1'], function()
     {
         Route::get('/', ['\App\Http\Controllers\Api\V1\ShopController','index']);
         Route::get('/show/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','show']);
-        Route::post('/store', ['\App\Http\Controllers\Api\V1\ShopController','store']);
-        Route::put('/update/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','update']);
-        Route::delete('/delete/{shop}', ['\App\Http\Controllers\Api\V1\ShopController','destroy']);
-
     });
 
     //Food endpoint
     Route::group(['middleware'=>'authorization', 'prefix'=>'food'], function ()
     {
-        Route::get('/', ['\App\Http\Controllers\Api\V1\FoodController', 'index']);
         Route::get('/show/{id}', ['\App\Http\Controllers\Api\V1\FoodController','show']);
 
     });
-   //other routes
-   Route::put('/profse', ['\App\Http\Controllers\Api\V1\UserController','profile']);
+
+    //Order endpoint
+    Route::group(['middleware'=>'authorization', 'prefix'=>'orders'], function ()
+    {
+        Route::get('/', ['\App\Http\Controllers\Api\V1\OrderController','index']);
+        Route::get('/show/{id}', ['\App\Http\Controllers\Api\V1\OrderController','show']);
+
+    });
+
+   //Profile routes
    Route::put('/profile', ['\App\Http\Controllers\Api\V1\UserController','profile']);
 
 });
