@@ -33,7 +33,7 @@ class OrderController extends Controller
      */
     public function show($order): \Illuminate\Http\JsonResponse
     {
-        $get_order = Order::whereId($order)->with(['food','user'])->first();
+        $get_order = Order::whereId($order)->with(['food','tracking'])->first();
 
         if (!$get_order){
             return $this->error(404,'This order does not exists');
@@ -43,7 +43,7 @@ class OrderController extends Controller
             return $this->error(404,'This order does not belong to you');
         }
 
-        $data = OrderResource::make($get_order)->withFood(true);
+        $data = OrderResource::make($get_order)->withFood(true)->withTracking(true);
         return $this->success($data, 'Order returned successfully');
     }
 

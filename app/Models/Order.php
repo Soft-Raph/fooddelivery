@@ -19,7 +19,10 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    public function tracking(): \Illuminate\Database\Eloquent\Relations\hasOne
+    {
+        return $this->hasOne(Tracking::class);
+    }
     public function food(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Food::class);
