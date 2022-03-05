@@ -51,13 +51,22 @@ Route::group(['prefix' => 'v1'], function()
     {
         Route::get('/', ['\App\Http\Controllers\Api\V1\OrderController','index']);
         Route::get('/show/{id}', ['\App\Http\Controllers\Api\V1\OrderController','show']);
+        Route::get('/order_id/tracking', ['\App\Http\Controllers\Api\V1\TrackingController','show']);
 
     });
 
     //Transaction endpoint
     Route::group(['middleware'=>'authorization', 'prefix'=>'transaction'], function ()
     {
+        Route::get('/', ['\App\Http\Controllers\Api\V1\TransactionController','index']);
         Route::get('/show/{id}', ['\App\Http\Controllers\Api\V1\TransactionController','show']);
+
+    });
+
+    //Tracking endpoint
+    Route::group(['middleware'=>'authorization', 'prefix'=>'tracking'], function ()
+    {
+        Route::get('/order/{id}', ['\App\Http\Controllers\Api\V1\TrackingController','show']);
 
     });
 
