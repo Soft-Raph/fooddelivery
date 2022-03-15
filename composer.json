@@ -12,7 +12,8 @@
         "laravel/passport": "^10.2",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "multicaret/laravel-acquaintances": "^3.5"
+        "multicaret/laravel-acquaintances": "^3.5",
+        "laravel/nova": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -49,6 +50,12 @@
             "@php artisan key:generate --ansi"
         ]
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./nova"
+        }
+    ],
     "extra": {
         "laravel": {
             "dont-discover": []
