@@ -8,13 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     use HasFactory;
-
+protected $casts = [
+  'created_at'=>'datetime'
+];
 
     protected $fillable = [
         'name',
         'address',
         'lat',
-        'long'
+        'long',
+        'state',
+        'city',
+        'country',
     ];
 
 
